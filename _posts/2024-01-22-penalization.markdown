@@ -28,5 +28,6 @@ I attached the RMSE graph in each case below.<br>
 **2. XGBoost with Random Forest**
 {% include plotly/RMSE_of_BTRF_alpha_change.html %}
 
-
-
+<br>
+The below plot is the mean of RMSE for the whole test period.
+{% include matplotlib/mean_of_rmse.png}

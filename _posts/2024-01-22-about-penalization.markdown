@@ -2,7 +2,7 @@
 title:  "About Penalization"
 show_date: true
 comments: true
-author: true
+# author: true
 # author: Minho Lee
 ---
 

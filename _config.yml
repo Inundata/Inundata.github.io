@@ -108,7 +108,7 @@ author:
   avatar           : "/assets/images/profile_image.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "In progress"
   location         : "Seoul, Korea"
-  email            : james.minho.lee@gmail.com
+  email            : "james.minho.lee@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"

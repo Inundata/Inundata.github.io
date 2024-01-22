@@ -1,8 +1,7 @@
 ---
 layout: post
 title:  "About Penalization"
-date:   2024-01-22 09:36:05 +0900
-categories: jekyll update
+show_date: true
 ---
 
 I've changed penalization parameters, specifically `lambda` and `alpha` in the xgboost.
@@ -29,4 +28,4 @@ I attached the RMSE graph in each case below.<br>
 {% include plotly/RMSE_of_BTRF_alpha_change.html %}
 
 The below plot is the mean of RMSE for the whole test period.
-![image](./matplotlib/mean_of_rmse.png)
+![image](./images/mean_of_rmse.png)

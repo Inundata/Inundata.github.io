@@ -293,3 +293,17 @@ defaults:
       show_date: true
       date_format: "%B %-d, %Y"
 
+  # _pages
+  - scope:
+      path: ""
+      type: pages
+    values:
+      layout: single
+      classes: wide
+
+  # _foo
+  - scope:
+      path: ""
+      type: foo
+    values:
+      layout: single

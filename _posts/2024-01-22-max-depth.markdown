@@ -11,14 +11,20 @@ To be brief, as same with the penalization parameters, the `max_depth` parameter
 
 I attached the RMSE graph in each case below.<br>
 
-**[`max_depth` ranges from 3 to 13]**<br>
-**1. Default XGBoost**<br>
+**[`max_depth` ranges from 3 to 13]**
+
+<br>
+
+**1. Default XGBoost**
 {% include plotly/RMSE_of_BT_max_depth_change.html %}
 
-**2. XGBoost with Random Forest**<br>
+<br>
+
+**2. XGBoost with Random Forest**
 {% include plotly/RMSE_of_BTRF_max_depth_change.html %}
 
 <br>
 <br>
+
 The below plot is the mean of RMSE for the whole test period.<br>
 ![image](/assets/result_images/rmse_max_depth.png){: .align-center}

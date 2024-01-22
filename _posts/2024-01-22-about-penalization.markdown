@@ -14,11 +14,14 @@ When changing lambda or alpha, alpha is set as the default value when changing l
 
 I attached the RMSE graph in each case below.<br>
 
-**[`lambda` ranges from 1 to 20; alpha = 1]**<br>
-**1. Default XGBoost**<br>
+**[`lambda` ranges from 1 to 20; alpha = 1]**
+
+<br>
+
+**1. Default XGBoost**
 {% include plotly/RMSE_of_BT_lambda_change.html %}
 
-**2. XGBoost with Random Forest**<br>
+**2. XGBoost with Random Forest**
 {% include plotly/RMSE_of_BTRF_lambda_change.html %}
 
 **[`alpha` ranges from 1 to 19; lambda = 0]**<br>
@@ -30,5 +33,6 @@ I attached the RMSE graph in each case below.<br>
 
 <br>
 <br>
+
 The below plot is the mean of RMSE for the whole test period.<br>
 ![image](/assets/result_images/mean_of_rmse.png){: .align-center}

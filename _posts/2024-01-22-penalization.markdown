@@ -2,6 +2,7 @@
 layout: post
 title:  "About Penalization"
 show_date: true
+comments: true
 ---
 
 I've changed penalization parameters, specifically `lambda` and `alpha` in the xgboost.
@@ -27,5 +28,6 @@ I attached the RMSE graph in each case below.<br>
 **2. XGBoost with Random Forest**
 {% include plotly/RMSE_of_BTRF_alpha_change.html %}
 
+<br>
 The below plot is the mean of RMSE for the whole test period.
-![image](./images/mean_of_rmse.png)
+![image](/assetsimages/mean_of_rmse.png)

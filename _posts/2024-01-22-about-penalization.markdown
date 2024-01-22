@@ -30,4 +30,4 @@ I attached the RMSE graph in each case below.<br>
 <br>
 <br>
 The below plot is the mean of RMSE for the whole test period.
-![image](/assets/images/mean_of_rmse.png){: .align-center}
+![image](/assets/result_images/mean_of_rmse.png){: .align-center}

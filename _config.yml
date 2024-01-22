@@ -105,7 +105,7 @@ analytics:
 # Site Author
 author:
   name             : "Minho Lee"
-  avatar           : "/assets/images/profile_image.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/profile_image.png" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
   bio              : "In progress"
   location         : "Seoul, Korea"
   email            : "james.minho.lee@gmail.com"
@@ -284,7 +284,7 @@ defaults:
       path: ""
       type: posts
     values:
-      layout: single
+      layout: single # 이 layout을 가져오는 것이므로, post에 default값으로 들어가는 것임. 따라서 post에 layout을 지정할 필요가 없음.
       author_profile: true
       read_time: true
       comments: true

@@ -2,8 +2,6 @@
 title:  "About Penalization"
 show_date: true
 comments: true
-# author: true
-# author: Minho Lee
 ---
 
 I've changed penalization parameters, specifically `lambda` and `alpha` in the xgboost.

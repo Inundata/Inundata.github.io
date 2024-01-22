@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "About Penalization"
 show_date: true
 comments: true

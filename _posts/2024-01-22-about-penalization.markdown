@@ -2,6 +2,7 @@
 title:  "About Penalization"
 show_date: true
 comments: true
+layout: single
 ---
 
 I've changed penalization parameters, specifically `lambda` and `alpha` in the xgboost.

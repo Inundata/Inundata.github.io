@@ -295,7 +295,7 @@ defaults:
 
   # _pages
   - scope:
-      path: ""
+      path: "_pates/splash-page.md"
       type: pages
     values:
       layout: single

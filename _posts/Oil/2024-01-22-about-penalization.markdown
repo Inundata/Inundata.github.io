@@ -23,7 +23,7 @@ I attached the RMSE graph in each case below.<br>
 
 ## 1. Lambda
 <br>
-**[`lambda` ranges from 1 to 20; alpha = 1]**
+**[`lambda` ranges from 1 to 20; alpha = 0]**
 
 **1. Default XGBoost**
 {% include plotly/RMSE_of_BT_lambda_change.html %}
@@ -36,7 +36,7 @@ I attached the RMSE graph in each case below.<br>
 
 ## 2. Alpha
 <br>
-**[`alpha` ranges from 1 to 19; lambda = 0]**
+**[`alpha` ranges from 0 to 19; lambda = 1]**
 
 **1. Default XGBoost**
 {% include plotly/RMSE_of_BT_alpha_change.html %}

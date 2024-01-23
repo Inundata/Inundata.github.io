@@ -8,6 +8,9 @@ categories:
 tags:
   - Python
   - XGBoost
+toc: true
+toc_sticky: true
+toc_label: "On this page"
 ---
 
 I've changed `max_depth` parameter, range from 3 to 13.
@@ -16,6 +19,8 @@ To be brief, as same with [the penalization parameters](/oil%20price%20forecasti
 
 I attached the RMSE graph in each case below.<br>
 
+## 1. Max depth
+<br>
 **[`max_depth` ranges from 3 to 13]**
 
 **1. Default XGBoost**

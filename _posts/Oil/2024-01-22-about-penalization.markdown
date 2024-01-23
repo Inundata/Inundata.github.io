@@ -8,6 +8,8 @@ categories:
 tags:
   - Python
   - XGBoost
+toc: true
+toc_sticky: true
 ---
 
 I've changed penalization parameters, specifically `lambda` and `alpha` in the xgboost.
@@ -19,6 +21,8 @@ When changing lambda or alpha, alpha is set as the default value when changing l
 
 I attached the RMSE graph in each case below.<br>
 
+## 1. Lambda
+<br>
 **[`lambda` ranges from 1 to 20; alpha = 1]**
 
 **1. Default XGBoost**
@@ -30,6 +34,8 @@ I attached the RMSE graph in each case below.<br>
 
 <br>
 
+## 2. Alpha
+<br>
 **[`alpha` ranges from 1 to 19; lambda = 0]**
 
 **1. Default XGBoost**

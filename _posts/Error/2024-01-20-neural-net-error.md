@@ -8,6 +8,9 @@ categories:
 tags:
   - Python
   - Error
+toc: true
+toc_sticky: true
+toc_label: "목차"
 ---
 
 얼마 전 Vanilla Neural Network를 짤 일이 있어서 짜본 다음에, reproducibility를 회사와 집 모두에서 확인하여 마음 놓고 있었다.
@@ -16,6 +19,8 @@ tags:
 
 며칠을 고생한 끝에 해결하긴 했는데, 아직 그 원인은 명확히 밝혀내지 못하고 있으며 혹시나 하여 이를 기록으로 남긴다([stackoverflow에 남긴 자문자답의 글](https://stackoverflow.com/questions/77843222/same-seed-number-package-versions-python-version-but-different-neural-net-re)).
 
+### 파이썬 패키지 버전 및 초기 셋팅
+<br>
 사용하고 있는 Python 및 관련한 package 버전은 다음과 같다.
 
 >>>
@@ -52,6 +57,8 @@ def reset_seeds(seed):
     tf.random.set_seed(seed)
 ```
 
+### 초기 가중치의 합
+<br>
 위와 같이 한 뒤에, 회사/집의 데스크탑과 노트북의 초기 weight의 sum을 확인한 결과, 둘의 결과는 모두 동일한 것으로 나왔다.
 
 **회사와 집의 초기 가중치의 합 (Before training)**
@@ -85,6 +92,8 @@ seed까지 맞췄는데도 가중치의 합이 달라, 며칠을 검색해보고
 
 그런데 이상하게도 코드를 아래와 같이 바꾸니, reproduce가 되는 것을 확인하였다.
 
+### Reproducibility Error 수정
+<br>
 **Original One**
 ```python
 reset_seeds(42) 

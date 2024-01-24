@@ -41,7 +41,7 @@ I attached the RMSE graph in each case below.<br/>
 <br>
 **[`lambda` ranges from 1 to 20; alpha = 0]**
 
-**XGBoost without subsampling**
+**1. XGBoost without subsampling**
 {% include oil_plotly/RMSE_of_BTRF_lambda_change_NoSubSampling.html %}
 
 <br>
@@ -50,7 +50,7 @@ I attached the RMSE graph in each case below.<br/>
 <br>
 **[`alpha` ranges from 0 to 19; lambda = 1]**
 
-**XGBoost without subsampling**
+**1. XGBoost without subsampling**
 {% include oil_plotly/RMSE_of_BTRF_alpha_change_NoSubSampling.html %}
 
 <br/>

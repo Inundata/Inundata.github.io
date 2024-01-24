@@ -26,11 +26,11 @@ I attached the RMSE graph in each case below.<br>
 **[`lambda` ranges from 1 to 20; alpha = 0]**
 
 **1. Default XGBoost**
-{% include plotly/RMSE_of_BT_lambda_change.html %}
+{% include oil_plotly/RMSE_of_BT_lambda_change.html %}
 
 <br>
 **2. XGBoost with Random Forest**
-{% include plotly/RMSE_of_BTRF_lambda_change.html %}
+{% include oil_plotly/RMSE_of_BTRF_lambda_change.html %}
 
 <br>
 
@@ -39,16 +39,16 @@ I attached the RMSE graph in each case below.<br>
 **[`alpha` ranges from 0 to 19; lambda = 1]**
 
 **1. Default XGBoost**
-{% include plotly/RMSE_of_BT_alpha_change.html %}
+{% include oil_plotly/RMSE_of_BT_alpha_change.html %}
 
 <br>
 **2. XGBoost with Random Forest**
-{% include plotly/RMSE_of_BTRF_alpha_change.html %}
-<br>
+{% include oil_plotly/RMSE_of_BTRF_alpha_change.html %}
+
 
 The below plot is the mean of RMSE for the whole test period.
 <br>
 
 <span>
-![image](/assets/result_images/mean_of_rmse.png){: .align-center}
+![image](/assets/oil_result_images/mean_of_rmse.png){: .align-center}
 </span>

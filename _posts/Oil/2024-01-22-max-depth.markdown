@@ -24,15 +24,15 @@ I attached the RMSE graph in each case below.<br>
 **[`max_depth` ranges from 3 to 13]**
 
 **1. Default XGBoost**
-{% include plotly/RMSE_of_BT_max_depth_change.html %}
+{% include oil_plotly/RMSE_of_BT_max_depth_change.html %}
 
 <br>
 **2. XGBoost with Random Forest**
-{% include plotly/RMSE_of_BTRF_max_depth_change.html %}
+{% include oil_plotly/RMSE_of_BTRF_max_depth_change.html %}
 <br>
 The below plot is the mean of RMSE for the whole test period.
 <br>
 
 <span>
-![image](/assets/result_images/rmse_max_depth.png){: .align-center}
+![image](/assets/oil_result_images/rmse_max_depth.png){: .align-center}
 </span>

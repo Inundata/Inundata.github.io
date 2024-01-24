@@ -18,7 +18,7 @@ In this post, I changed the XGBoost `with subsampling` to `without subsampling`.
 
 Through this work, I expect that I can understand the `subsampling` parameter more in terms of penalization.
 
-To bring back memories, I use these parameters for the XGBoost.
+To remind you of your memories, I use these parameters for the XGBoost.
 
 | Name of parameters | Details | Values |
 | :-: | :-: | :-: |
@@ -30,12 +30,12 @@ To bring back memories, I use these parameters for the XGBoost.
 |    `random_state`     | For the reproducibility |    42   |
 
 
-Also, I perform the *one-step ahead prediction* and the target is *the price of WTI nominal*.
+Also, I perform the *one-step ahead prediction* and the target is *the monthly price of WTI nominal*.
 
 **To be brief, as I expected, the penalization parameters were useful if we didn't perform the subsampling. *Thus, in terms of penalization, we can use `subsampling` or `penalization parameters`*.**
 
 I attached the RMSE graph in each case below.<br/>
-(For each point, it is the accumulated  RMSE up to that date.)
+(For each point, it is the accumulated RMSE up to that date.)
 
 ## 1. Lambda
 <br>
@@ -53,10 +53,10 @@ I attached the RMSE graph in each case below.<br/>
 **XGBoost without subsampling**
 {% include oil_plotly/RMSE_of_BTRF_alpha_change_NoSubSampling.html %}
 
-<br>
+<br/>
 
-The below plot is the mean of RMSE for the test period(recent 5 years; except the COVID-19 period).
-<br>
+The below plot is the mean of RMSE for the test period(recent 5 years; except the COVID-19 period).<br/>
+For the label `with subsampling`, it means that I did the subsampling in $$\sqrt{n}$$ with `alpha = 0` and `lambda = 1`.
 
 <span>
 ![image](/assets/oil_result_images/rmse_without_subsampling_5years.png){: .align-center}

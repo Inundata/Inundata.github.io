@@ -32,7 +32,7 @@ To remind you of your memories, I use these parameters for the XGBoost.
 
 Also, I perform the *one-step ahead prediction* and the target is *the monthly price of WTI nominal*.
 
-**To be brief, as I expected, the penalization parameters were useful if we didn't perform the subsampling. *Thus, in terms of penalization, we can use `subsampling` or `penalization parameters`*.**
+**To be brief, as I expected, the penalization parameters were useful if we didn't perform the subsampling. *Thus, in terms of regularization, we can use `subsampling` or `penalization parameters`*.**
 
 I attached the RMSE graph in each case below.<br/>
 (For each point, it is the accumulated RMSE up to that date.)

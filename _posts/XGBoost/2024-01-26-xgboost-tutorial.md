@@ -43,8 +43,8 @@ For *t-th* iteration, the XGBoost is minimizing the following objective function
 To quickly optimize the objective function, it uses the Taylor Series Approximation.
 <br/>
 <div align="center">$$L^{t}\approx\sum_{i=1}^n[l(y_{i}, \hat{y_{i}}^{t-1}) + g_{i}f_{t}(x_{i}) + \frac{1}{2}h_{i}f_{t}^2(x_{i})] + \Omega(f_{t})$$</div>
-<div align="center">$$g_{i} = \frac{\partial{l(y_{i}, \hat{y_{i}}^{t-1})}}{\hat{y_{i}^{t-1}}}$$</div>
-<div align="center">$$h_{i} = \frac{\partial^2{l(y_{i}, \hat{y_{i}}^{t-1})}}{\hat{y_{i}^{t-1}}}$$</div>
+<div align="center">$$g_{i} = \frac{\partial{l(y_{i}, \hat{y_{i}}^{t-1})}}{\hat{y_{i}}^{t-1}}$$</div>
+<div align="center">$$h_{i} = \frac{\partial^2{l(y_{i}, \hat{y_{i}}^{t-1})}}{\hat{y_{i}}^{t-1}}$$</div>
 
 $$n$$ is the *total number of observations* and $$\Omega(f_{t})$$ is *the penalization term*.<br/>
 For more details, refer to the above XGBoost documentation or the paper.
@@ -100,7 +100,7 @@ From the [lead maintainer of XGBoost](https://github.com/dmlc/xgboost/issues/195
 - Default value = `256`
 
 <h3>5. max_leaves</h3>
-- The maximum number of leaves; 0 indicates no limit.
+- The maximum number of leaves; `0` indicates no limit.
 - It can not be used for the `exact` tree method.
 - Default value = `0`
 
@@ -160,7 +160,7 @@ x = np.arange(1, 101).reshape(-1, 1) # ranges from 1 to 100 and increases by 1
 - However, if we do it with the `xgboost` package by imposing find only one point for splitting it fails.
 
 ```python
-tree_method = 'hist'
+tree_method = 'approx'
 max_bin = 2 # Impose to find only one point
 n_estimators = 10
 random_state = 42
@@ -179,7 +179,7 @@ It split at the point where `x < 48`. This result is **not what we expected.**
 
 <h3>2. exact</h3>
 
-- Finding the exact point can be solved through using the `exact` method.
+- Finding the exact point can be solved by using the `exact` method.
 - Applying the `exact` method to the previous example is as follows.
 
 ```python
@@ -198,7 +198,7 @@ mdl.fit(X = x, y = y)
 ![xgboost-right-result](/assets/xgboost/xgboost-right-result.png){: .align-center}<br/>
 It split at the point where `x < 20.5`. **This result is what we expected.**
 
-However, we cannot use the `exact` for other problems due to it split **all of the points**.
+However, we cannot use the `exact` for other problems when we one to get one or two points to be split due to it splitting **all of the points**.
 
 <h3>3. Objective</h3>
 - Our objective is to modify the XGBoost code to use `exact` method with `max_bin` parameter.

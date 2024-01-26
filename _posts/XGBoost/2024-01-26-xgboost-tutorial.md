@@ -198,7 +198,7 @@ mdl.fit(X = x, y = y)
 ![xgboost-right-result](/assets/xgboost/xgboost-right-result.png){: .align-center}<br/>
 It split at the point where `x < 20.5`. **This result is what we expected.**
 
-However, we cannot use the `exact` for other problems when we one to get one or two points to be split due to it splitting **all of the points**.
+However, we cannot use the `exact` for other problems when we want to get one or two points to be split due to it splitting **all of the points**.
 
 <h3>3. Objective</h3>
 - Our objective is to modify the XGBoost code to use `exact` method with `max_bin` parameter.

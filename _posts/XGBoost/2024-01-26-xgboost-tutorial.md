@@ -27,24 +27,24 @@ The summary of the XGBoost is presented as below.
 
 ![xgboost-intro](/assets/xgboost/xgboost-intro.jpg){: .align-center}
 
-From the above picture, the input of the *t-th* iteration is the *(t-1)-th* iteration's residual.
+From the above picture, the input of the *t-th* boosting is the *(t-1)-th* boosting's residual.
 
-By getting this as an input, in the *t-th* iteration, it formulates one tree(or forest), and the result is denoted as $$f_{t}$$.
+By getting this as an input, in the *t-th* boosting, it formulates one tree(or forest), and the result is denoted as $$f_{t}$$.
 
-Finally, the *t-th* iteration prediction value is the sum of all of these trees(or forests) and we can denote as 
+Finally, the *t-th* boosting prediction value is the sum of all of these trees(or forests) and we can denote as 
 <br/>
 <div align="center">$$\hat{y_{t}} = \sum_{t=1}^Tf_{t}$$</div>
-<div align="center">T = total number of iterations</div>
+<div align="center">T = total number of boostings</div>
 <br/>
-For *t-th* iteration, the XGBoost is minimizing the following objective function.
+For *t-th* boosting, the XGBoost is minimizing the following objective function.
 <br/>
 <div align="center">$$L^{t}=\sum_{i=1}^n[l(y_{i}, \hat{y_{i}}^{t-1}) + f_{t}(x_{i})] + \Omega(f_{t})$$</div>
 
 To quickly optimize the objective function, it uses the Taylor Series Approximation.
 <br/>
 <div align="center">$$L^{t}\approx\sum_{i=1}^n[l(y_{i}, \hat{y_{i}}^{t-1}) + g_{i}f_{t}(x_{i}) + \frac{1}{2}h_{i}f_{t}^2(x_{i})] + \Omega(f_{t})$$</div>
-<div align="center">$$g_{i} = \frac{\partial{l(y_{i}, \hat{y_{i}}^{t-1})}}{\hat{y_{i}}^{t-1}}$$</div>
-<div align="center">$$h_{i} = \frac{\partial^2{l(y_{i}, \hat{y_{i}}^{t-1})}}{\hat{y_{i}}^{t-1}}$$</div>
+<div align="center">$$g_{i} = \frac{\partial{l(y_{i}, \hat{y_{i}}^{t-1})}}{\partial{\hat{y_{i}}^{t-1}}}$$</div>
+<div align="center">$$h_{i} = \frac{\partial^2{l(y_{i}, \hat{y_{i}}^{t-1})}}{\partial{\hat{y_{i}}^{t-1}}}$$</div>
 
 $$n$$ is the *total number of observations* and $$\Omega(f_{t})$$ is *the penalization term*.<br/>
 For more details, refer to the above XGBoost documentation or the paper.
@@ -67,7 +67,7 @@ The official Python API reference documentation of the XGBoost is linked below.
 - Default value = `100`
 
 <h3>2. max_depth</h3>
-- The maximum tree depth for each tree in each iteration.
+- The maximum tree depth for each tree in each boosting.
 - Default value = `6`
 
 <h3>3. tree_method</h3>
@@ -92,7 +92,7 @@ Create the buckets that match with the parameter `max_bin` and put each value in
 ![approx](/assets/xgboost/approx.png){: .align-center}
 <br/>
 - difference between `approx` and `hist` <br/>
-From the [lead maintainer of XGBoost](https://github.com/dmlc/xgboost/issues/1950), `approx` method generates a new set of bins for each iteration, whereas the `hist` method re-uses the bins over multiple iterations.
+From the [lead maintainer of XGBoost](https://github.com/dmlc/xgboost/issues/1950), `approx` method generates a new set of bins for each boosting, whereas the `hist` method re-uses the bins over multiple boostings.
 
 <h3>4. max_bin</h3>
 - For the `hist` or `approx` tree method, it refers to the maximum number of bins per feature.
@@ -117,7 +117,7 @@ From the [lead maintainer of XGBoost](https://github.com/dmlc/xgboost/issues/195
 - column subsampling is also possible. For details, check the documentation.
 
 <h3>8. num_parallel_tree</h3>
-- Total number of trees in each iteration. If this parameter is not specified, each iteration will use only one tree.
+- Total number of trees in each boosting. If this parameter is not specified, each boosting will use only one tree.
 - Default value = `1`
 
 <h3>9. reg_alpha</h3>
@@ -157,7 +157,7 @@ x = np.arange(1, 101).reshape(-1, 1) # ranges from 1 to 100 and increases by 1
 - If someone asks you to find the best splitting point from this picture, you will easily choose the point `x=20`(the red line).<br/><br/>
 ![y-and-x](/assets/xgboost/y-and-x-split.png){: .align-center}
 
-- However, if we do it with the `xgboost` package by imposing find only one point for splitting it fails.
+- However, if we do it with the `xgboost` package by giving the `max_bin` parameter to `2`, it fails.
 
 ```python
 tree_method = 'approx'
@@ -201,7 +201,7 @@ It split at the point where `x < 20.5`. **This result is what we expected.**
 However, we cannot use the `exact` for other problems when we want to get one or two points to be split due to it splitting **all of the points**.
 
 <h3>3. Objective</h3>
-- Our objective is to modify the XGBoost code to use `exact` method with `max_bin` parameter.
+- Our objective is to modify the XGBoost code to use `exact` by giving restriction of finding the splitting point.
 - By modifying this, we can restrict the splitting point to only one or two even if other points can lower the loss.
 - However, the source code is provided in `C/C++`.
 

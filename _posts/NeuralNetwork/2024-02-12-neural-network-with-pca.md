@@ -4,7 +4,7 @@ show_date: true
 comments: true
 layout: single
 categories:
-  - Machine learning
+  - Oil price forecasting
 tags:
   - Python
   - Neural Network

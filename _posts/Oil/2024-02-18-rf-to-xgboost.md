@@ -37,26 +37,26 @@ If the performances are not different between `XGBoost` and `custom_RF`, then we
 
 - Used the `RMSE` for measuring the performance.
 - Varied the `num_parallel_tree(=number of trees for each boosting)` and measured the performance.
-- Random walk RMSE = `0.889`
+- Random walk RMSE = `0.0889`
 
 <h4> a. XGBoost </h4>
 
 | num_parallel_tree | RMSE | (RMSE of XGBoost) / (RMSE of RW) |
 | :-: | -: | -: |
-|    100   | .0830 |    93.4%  |
-|    120     | .0828 |    93.1% |
-|    140     | .0826 |   92.9%  |
-|    160     | .0827 |    93.0%  |
-|    170     | .0828 |    93.1% |
-|    180     | .0827 |    93.0% |
-|    200     | .0831 |    93.5%  |
-|    220     | .0831 |    93.5%  |
-|    240     | .0829 |    93.3%  |
-|    260     | .0829 |    93.3%  |
-|    280     | .0828 |    93.1%  |
-|    300     | .0831 |    93.5%  |
+|    100   | .0828 |    93.1%  |
+|    120     | .0835 |    93.9% |
+|    140     | .0833 |   93.7%  |
+|    160     | .0833 |    93.7%  |
+|    170     | .0833 |    93.7% |
+|    180     | .0834 |    93.8% |
+|    200     | .0835 |    93.9%  |
+|    220     | .0835 |    93.9%  |
+|    240     | .0836 |    94.0%  |
+|    260     | .0836 |    94.0%  |
+|    280     | .0835 |    93.9%  |
+|    300     | .0837 |    94.2%  |
 
-- The performance was the best when `num_parallel_tree = 180`
+- The performance was the best when `num_parallel_tree = 100`
 
 <h4> b. custom_RF </h4>
 
@@ -75,7 +75,7 @@ If the performances are not different between `XGBoost` and `custom_RF`, then we
 |    280     | .0825 |    92.8% |
 |    300     | .0831 |    93.5% |
 
-- The performance was the best when `num_parallel_tree = 180`, as same in `XGBoost`
+- The performance was the best when `num_parallel_tree = 180`.
 - With `num_parallel_tree = 180`, the performance was better than `XGBoost`.
 - The ratios fluctuated more than the `XGBoost`.
 

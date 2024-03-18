@@ -10,6 +10,7 @@ tags:
   - Sklearn
 toc: true
 toc_sticky: true
+published: true
 ---
 
 머신러닝을 이용하다보면, Scaling, 모델 예측 성능 평가 등 다양한 것을 하여야 한다. <br/>

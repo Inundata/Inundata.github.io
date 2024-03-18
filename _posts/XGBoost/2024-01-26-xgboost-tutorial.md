@@ -10,6 +10,7 @@ tags:
   - XGBoost
 toc: true
 toc_sticky: true
+published: false
 ---
 
 In this post, we will take a moment what is XGBoost and its parameters in Python.

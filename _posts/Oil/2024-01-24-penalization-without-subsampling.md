@@ -10,6 +10,7 @@ tags:
   - XGBoost
 toc: true
 toc_sticky: true
+published: false
 ---
 
 From the [previous post](https://inundata.github.io/oil%20price%20forecasting/about-penalization/), I checked that the penalization parameters were not effective when I set the XGBoost `with subsampling`.

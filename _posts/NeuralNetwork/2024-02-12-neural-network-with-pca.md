@@ -10,6 +10,7 @@ tags:
   - Neural Network
 toc: true
 toc_sticky: true
+published: false
 ---
 
 In this post, I will show some results of forecasting WTI nominal price using the neural network.

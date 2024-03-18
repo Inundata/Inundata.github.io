@@ -10,6 +10,7 @@ tags:
   - XGBoost
 toc: true
 toc_sticky: true
+published: false
 ---
 
 I've changed penalization parameters, specifically `lambda` and `alpha` in the xgboost.

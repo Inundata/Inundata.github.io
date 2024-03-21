@@ -13,7 +13,7 @@ toc_sticky: true
 published: true
 ---
 
-I've performed an one-step ahead prediction.
+I've performed a one-step ahead prediction recently again. I made a mistake in setting the `n_estimator` value as 10.
 
 ## 1. Parameter settings
 - `max_depth` = 6

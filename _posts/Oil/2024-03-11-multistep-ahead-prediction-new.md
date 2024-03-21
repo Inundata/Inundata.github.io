@@ -10,7 +10,7 @@ tags:
   - XGBoost
 toc: true
 toc_sticky: true
-published: false
+published: true
 ---
 
 I've performed a multi-step ahead prediction, due to changing some code, and updated the result.
@@ -27,7 +27,7 @@ $$y_{t+3} = \beta_{1}y_{t+2} + \beta_{2}y_{t+1} + \beta_{3}y_{t} + \beta_{4}y_{t
 
 for the forecasting,
 
-$$\hat{y}_{t+1} = \hat{\beta}_{1}y_{t} + \hat{\beta_{2}}y_{t-1} + \hat{\beta_{3}}y_{t-2} + \hat{\beta_{4}}y_{t-3} + \hat{f}(X_{t})$ $
+$$\hat{y}_{t+1} = \hat{\beta}_{1}y_{t} + \hat{\beta_{2}}y_{t-1} + \hat{\beta_{3}}y_{t-2} + \hat{\beta_{4}}y_{t-3} + \hat{f}(X_{t})$$
 $$\hat{y}_{t+2} = \hat{\beta}_{1}\hat{y}_{t+1|t} + \hat{\beta}_{2}y_{t} + \hat{\beta}_{3}y_{t-1} + \hat{\beta}_{4}y_{t-2} + \hat{f}(X_{t})$$
 $$\hat{y}_{t+3} = \hat{\beta}_{1}\hat{y}_{t+2|t} + \hat{\beta}_{2}\hat{y}_{t+1|t} + \hat{\beta}_{3}y_{t} + \hat{\beta}_{4}y_{t-1} + \hat{f}(X_{t})$$
 

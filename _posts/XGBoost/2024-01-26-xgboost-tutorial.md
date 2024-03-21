@@ -10,7 +10,7 @@ tags:
   - XGBoost
 toc: true
 toc_sticky: true
-published: false
+published: true
 ---
 
 In this post, we will take a moment what is XGBoost and its parameters in Python.
@@ -32,27 +32,27 @@ From the above picture, the input of the *t-th* boosting is the *(t-1)-th* boost
 
 By getting this as an input, in the *t-th* boosting, it formulates one tree(or forest), and the result is denoted as $$f_{t}$$.
 
-Finally, the *t-th* boosting prediction value is the sum of all of these trees(or forests) and we can denote as 
+Finally, the *T-th* boosting prediction value is the sum of all of these trees(or forests) and we can denote as 
 <br/>
-<div align="center">$$\hat{y_{t}} = \sum_{t=1}^Tf_{t}$$</div>
+<div align="center">$$\hat{y_{T}} = \sum_{t=1}^Tf_{t}$$</div>
 <div align="center">T = total number of boostings</div>
 <br/>
 For *t-th* boosting, the XGBoost is minimizing the following objective function.
 <br/>
-<div align="center">$$L^{t}=\sum_{i=1}^n[l(y_{i}, \hat{y_{i}}^{t-1}) + f_{t}(x_{i})] + \Omega(f_{t})$$</div>
+<div align="center">$$L^{t}=\sum_{i=1}^n[l(y_{i}, \hat{y_{i}}^{t-1} + f_{t}(x_{i}))] + \Omega(f_{t})$$</div>
 
 To quickly optimize the objective function, it uses the Taylor Series Approximation.
 <br/>
 <div align="center">$$L^{t}\approx\sum_{i=1}^n[l(y_{i}, \hat{y_{i}}^{t-1}) + g_{i}f_{t}(x_{i}) + \frac{1}{2}h_{i}f_{t}^2(x_{i})] + \Omega(f_{t})$$</div>
 <div align="center">$$g_{i} = \frac{\partial{l(y_{i}, \hat{y_{i}}^{t-1})}}{\partial{\hat{y_{i}}^{t-1}}}$$</div>
-<div align="center">$$h_{i} = \frac{\partial^2{l(y_{i}, \hat{y_{i}}^{t-1})}}{\partial{\hat{y_{i}}^{t-1}}}$$</div>
+<div align="center">$$h_{i} = \frac{\partial^2{l(y_{i}, \hat{y_{i}}^{t-1})}}{\partial{(\hat{y_{i}}^{t-1})}^2}$$</div>
 
 $$n$$ is the *total number of observations* and $$\Omega(f_{t})$$ is *the penalization term*.<br/>
 For more details, refer to the above XGBoost documentation or the paper.
 
 ## 2. Parameters of the XGBoost
 
-In this part, I will explain the XGBoost parameters that you must know in more details. <br/>
+In this part, I will explain the XGBoost parameters that you must know in more detail. <br/>
 The official Python API reference documentation of the XGBoost is linked below.
 
 - Documentation of the XGBoost: [Click here](https://xgboost.readthedocs.io/en/stable/python/python_api.html)
@@ -60,11 +60,11 @@ The official Python API reference documentation of the XGBoost is linked below.
 <br/><br/>
 
 *Note)*
-1. XGBoost can do both the *classification* and *regression*, but the parameters are almost the same. Thus, I will explain by referring to the *XGBRegressor*. <br/>
-2. Some parameters' default value are not written in the above documentation.
+1. XGBoost can do both the *classification* and *regression*, and the parameters are almost the same. Thus, I will explain by referring to the *XGBRegressor*. <br/>
+2. Some parameters' default values are not written in the above documentation.
 
 <h3>1. n_estimators</h3>
-- This refers to the total number of times to iterately fit the residuals.
+- This refers to the total number of times to fit the residuals iterately.
 - Default value = `100`
 
 <h3>2. max_depth</h3>
@@ -73,7 +73,7 @@ The official Python API reference documentation of the XGBoost is linked below.
 
 <h3>3. tree_method</h3>
 - The method of finding the splitting point for each feature. There are 4 values for this parameter; `auto`, `exact`, `approx`, and `hist`. <br/>
-ⅰ. `auto` : Sames as the `hist` method. <br/>
+ⅰ. `auto` : Same as the `hist` method. <br/>
 ⅱ. `exact` : Exact greedy algorithm. Splitting all of the candidates. <br/>
 ⅲ. `approx` : Create the buckets for each feature and find the split. <br/>
 ⅳ. `hist` : same as `approx` but much more faster. <br/>
@@ -106,12 +106,12 @@ From the [lead maintainer of XGBoost](https://github.com/dmlc/xgboost/issues/195
 - Default value = `0`
 
 <h3>6. learning_rate</h3>
-- It has the range 0 from 1 and is multipled to the $$f_{t}$$.<br/>
+- It has the range 0 from 1 and is multiplied to the $$f_{t}$$.<br/>
 <div align="center">$$\hat{y_{t}} = \hat{y_{t-1}} + (lr) * f_{t}$$</div>
 - Default value = `0.3`
 
 <h3>7. subsample</h3>
-- The ratio of row subsampling. The subsampled data is feed to each tree.
+- The ratio of row subsampling. The subsampled data is fed to each tree.
 - In XGBoost, it performs the [`sampling without replacement`](https://xgboost.readthedocs.io/en/stable/tutorials/rf.html).
 - Each tree will have different subsampled data.
 - Default value = `1`
@@ -140,7 +140,7 @@ Currently, `max_bin` and `exact` can’t be used at the same time. In addition, 
 
 <h3>1. max_bin</h3>
 
-- If we use this parameter with the `approx`, it does not find the **exact** point to be splitted.
+- If we use this parameter with the `approx`, it does not find the **exact** point to be split.
 - For example, let's create the `y` and `x` as follows.
 
 ```python

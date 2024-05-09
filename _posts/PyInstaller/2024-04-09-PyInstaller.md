@@ -47,7 +47,7 @@ pyinstaller
 
 ### 오류1) module not founded error
 
-해당 오류는 custom module을 찾지 못하겠다는 에러는 아래에서 다루고, pip 혹은 conda를 통해서 설치한 package를 못찾겠다는 에러부터 고려해보자. 나 같은 경우에는 `sklearn`을 못찾는다는 에러가 나왔다. <br/>
+Custom module을 찾지 못하겠다는 에러는 아래에서 다루고, pip 혹은 conda를 통해서 설치한 package를 못찾겠다는 에러부터 고려해보자. 나 같은 경우에는 `sklearn`을 못찾는다는 에러가 나왔다. <br/>
 
 이 경우 다음과 같이 수정하면 문제가 해결된다. <br/>
 

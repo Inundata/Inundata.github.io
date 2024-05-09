@@ -25,7 +25,7 @@ pyinstaller
 
 ```
 >>> conda activate (pyinstaller가 실행된 VirtualEnv)
->>> pyinstall --onefile (파일명).py
+>>> pyinstaller --onefile (파일명).py
 ```
 
 이렇게 하면 *.py파일이 있는 내부에 `build`, `dist`폴더가 생기고, `dist`폴더에 *.exe파일이 생긴다. <br>
@@ -41,18 +41,44 @@ pyinstaller
 |__ MyFile1.py
 |
 폴더2
-|__ MyFile2
+|__ MyFile2.py
 ```
 위의 내용을 설명하면, `폴더1`에 있는 `MyFile1.py`의 프로그램을 *.exe로 만들고 싶은 상황이고, `폴더2`에 있는 `MyFile2.py`은 `MyFile1.py`에 module처럼 사용되고 있는 상황이다. <br/>
 
 ### 오류1) module not founded error
 
-해당 오류는 custom module을 찾지 못하겠다는 것이 아니라, pip 혹은 conda를 통해서 설치한 package를 못찾겠다는 에러인데, 나 같은 경우에는 `sklearn`을 못찾는다는 에러가 나왔다. <br/>
+해당 오류는 custom module을 찾지 못하겠다는 에러는 아래에서 다루고, pip 혹은 conda를 통해서 설치한 package를 못찾겠다는 에러부터 고려해보자. 나 같은 경우에는 `sklearn`을 못찾는다는 에러가 나왔다. <br/>
 
 이 경우 다음과 같이 수정하면 문제가 해결된다. <br/>
 
 ```
->>> pyinstall --onefile --hidden-import sklearn MyFile1.py
+>>> pyinstaller --onefile --hidden-import sklearn MyFile1.py
+```
+
+### 오류1-1) module not founded error(custom module이 안 말려들어간 경우)
+
+해당 오류는 custom module을 찾지 못해서 발생하는 오류임. <br/>
+
+이는 pyinstaller를 이용하여 파일을 컴파일링할때, custom module이 있는 parent의 경로를 지정해주면 된다. <br/>
+
+가령, 아래와 같이 나의 폴더 경로가 있다고 해보자.
+```
+폴더1
+|__ MyFile1.py
+|
+폴더2
+|__ MyFile2.py
+```
+<br/>
+
+이때 만약 내가 MyFile1.py를 컴파일링 하려 하고, MyFile2.py가 MyFile1.py에서 class역할을 하고 있으면, `오류1`에서 했던 것과 같이, `--hidden-import`를 한번 더 써서 `폴더2`를 module로 가져가야한다고 한다고 알려줘야한다. <br/>
+
+근데, pyinstaller는 PYTHONPATH가 있는 부분만 찾으므로, 내가 PATH를 추가적으로 지정해줘야한다. <br/>
+
+이 경우 `--paths`의 인자를 통해서 directory를 지정해줘야한다. 아래와 같이 수정하면 문제가 해결된다. (폴더2가 C:\Folder\폴더2의 경로에 있다고 가정) <br/>
+
+```
+>>> pyinstaller --onefile --paths "C:\Folder\폴더2" --hidden-import sklearn --hidden-import 폴더2 MyFile1.py
 ```
 
 ### 오류2) custom module이 import되지 않는 문제

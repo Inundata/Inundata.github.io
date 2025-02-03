@@ -23,6 +23,24 @@ headers = {
     "Accept": "application/vnd.github.v3+json"
 }
 
+def delete_all_releases(GITHUB_API_URL, headers):
+    """모든 기존 릴리즈 삭제"""
+    releases_url = f"{GITHUB_API_URL}/releases"
+    response = requests.get(releases_url, headers=headers)
+
+    if response.status_code == 200:
+        releases = response.json()
+        for release in releases:
+            delete_url = f"{GITHUB_API_URL}/releases/{release['id']}"
+            del_response = requests.delete(delete_url, headers=headers)
+
+            if del_response.status_code == 204:
+                print(f"🗑️ 기존 릴리즈 삭제 완료: {release['tag_name']} (ID: {release['id']})")
+            else:
+                print(f"❌ 릴리즈 삭제 실패: {del_response.json()}")
+    else:
+        print(f"❌ 기존 릴리즈 목록 가져오기 실패: {response.json()}")
+
 def get_release(GITHUB_API_URL, TAG_NAME, headers):
     """기존 릴리즈 정보를 가져옴. 존재하면 ID 반환, 없으면 None 반환"""
     release_url = f"{GITHUB_API_URL}/releases/tags/{TAG_NAME}"
@@ -99,7 +117,12 @@ def upload_file(release_id, upload_url, f_name, f_path, headers):
 
 def main(f_name, f_path):
     """메인 실행 함수"""
-    # 1️⃣ 기존 릴리즈 확인 (없으면 새로 생성)
+
+    # 1️⃣ 모든 기존 릴리즈 삭제
+    print("🔹 기존 릴리즈 삭제 중...")
+    delete_all_releases(GITHUB_API_URL, headers)
+
+    # 2️⃣ 기존 릴리즈 확인 (없으면 새로 생성)
     release_id, upload_url = get_release(GITHUB_API_URL, TAG_NAME, headers)
     if not release_id:
         print("🔹 기존 릴리즈 없음 → 새 릴리즈 생성 중...")
@@ -107,10 +130,10 @@ def main(f_name, f_path):
     else:
         print(f"✅ 기존 릴리즈 확인 완료 (ID: {release_id})")
 
-    # 2️⃣ 파일 업로드
+    # 3️⃣ 파일 업로드
     download_url = upload_file(release_id, upload_url, f_name, f_path, headers)
 
-    # 3️⃣ 다운로드 링크 출력
+    # 4️⃣ 다운로드 링크 출력
     print(f"\n📥 데이터 다운로드  경로: {download_url}")
 
     return download_url

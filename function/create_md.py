@@ -19,7 +19,7 @@ def create_md(title, content, md_path):
     comments: true
     layout: single
     categories:
-    - Temperature
+    - data
     tags: data
     toc: true
     toc_sticky: true

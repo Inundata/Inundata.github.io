@@ -115,7 +115,7 @@ def upload_file(release_id, upload_url, f_name, f_path, headers):
     
     print(f"❌ 파일 업로드 실패: {response.json()}")
 
-def main(f_name, f_path):
+def main(f_name, f_path, FILE_LIST):
     """메인 실행 함수"""
 
     # 1️⃣ 모든 기존 릴리즈 삭제
@@ -131,9 +131,13 @@ def main(f_name, f_path):
         print(f"✅ 기존 릴리즈 확인 완료 (ID: {release_id})")
 
     # 3️⃣ 파일 업로드
-    download_url = upload_file(release_id, upload_url, f_name, f_path, headers)
+    download_links = []
+    for file_path in FILE_LIST:
+        download_link = upload_file(release_id, upload_url, file_path)
+        if download_link:
+            download_links.append(download_link)
 
     # 4️⃣ 다운로드 링크 출력
-    print(f"\n📥 데이터 다운로드  경로: {download_url}")
+    print(f"\n📥 데이터 다운로드  경로: {download_links}")
 
-    return download_url
+    return download_links

@@ -86,10 +86,10 @@ try:
     title = f"{datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터"
     content = f"""
 
-    {datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터입니다.
+{datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터입니다.
 
-    1. [Long version]({download_links[0]})
-    2. [Wide version]({download_links[1]})
+1. [Long version]({download_links[0]})
+2. [Wide version]({download_links[1]})
     """
     create_md(title, content, os.getcwd())
 

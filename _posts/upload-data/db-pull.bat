@@ -1,3 +1,5 @@
+chcp 65001 >nul
+
 REM 1️.run python
 "C:\Users\HERO\anaconda3\envs\db\python.exe" "E:\OneDrive\Github\[i-MAES]\[Collaborate]\[Workspace]\000. github_page\Inundata.github.io\_posts\upload-data\db-pull.py"
 

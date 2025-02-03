@@ -45,8 +45,8 @@ try:
     load_dotenv()
 
     # 🔹 특정 경로의 모든 .md 파일 삭제
-    md_files = glob.glob(os.path.join(os.path.cwd(), "*.md"))
-    
+    md_files = list(Path(os.getcwd()).glob("*.md"))
+
     for md_file in md_files:
         try:
             os.remove(md_file)
@@ -94,11 +94,11 @@ try:
     """
     create_md(title, content, os.getcwd())
 
-except:
+except Exception as e:
     # telegram bot 생성
     iMAES_TELEGRAM_TOKEN = "iMAES_TELEGRAM_TOKEN"
     iMAES_TELEGRAM_CHANNEL_ID = "iMAES_TELEGRAM_CHANNEL_ID"
     bot = TelegramBot(iMAES_TELEGRAM_TOKEN, iMAES_TELEGRAM_CHANNEL_ID)
 
-    text = f"{datetime.today().strftime('%Y-%m-%d')} github page업로드가 실패했습니다."
+    text = f"{datetime.today().strftime('%Y-%m-%d')} github page업로드가 실패했습니다 : {e}"
     bot.send_message(text)

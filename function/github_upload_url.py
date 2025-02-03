@@ -132,8 +132,8 @@ def main(f_name, f_path, FILE_LIST):
 
     # 3️⃣ 파일 업로드
     download_links = []
-    for file_path in FILE_LIST:
-        download_link = upload_file(release_id, upload_url, file_path)
+    for f_name in FILE_LIST:
+        download_link = upload_file(release_id, upload_url, f_name, f_path, headers)
         if download_link:
             download_links.append(download_link)
 

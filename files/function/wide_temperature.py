@@ -14,7 +14,7 @@ def wide_temperature(file_path, temp_fname):
 
     wide_dict = {}
     stnIds = [108, 159, 143, 133, 156, 112, 114, 119]
-    for stnId in [108, 159, 143, 133, 156, 112, 114, 119]:
+    for stnId in stnIds:
 
         # wide temperature
         temp_long = pd.read_excel(f"{file_path}/{temp_fname}", sheet_name = f"{stnId}")
@@ -40,6 +40,7 @@ def wide_temperature(file_path, temp_fname):
 
         # 시작점은 1991년 1월 1일
         temp_wide = temp_wide.loc[(temp_wide["year"] >= 1991) & (temp_wide["month"] >= 1) & (temp_wide["day"] >= 1)]
+        wide_dict[stnId] = temp_wide
 
 
     writer = pd.ExcelWriter(f"{file_path}/temperature_wide_{datetime.today().strftime('%y%m%d')}.xlsx"

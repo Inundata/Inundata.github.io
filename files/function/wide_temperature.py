@@ -40,6 +40,12 @@ def wide_temperature(file_path, temp_fname):
 
         # 시작점은 1991년 1월 1일
         temp_wide = temp_wide.loc[(temp_wide["year"] >= 1991) & (temp_wide["month"] >= 1) & (temp_wide["day"] >= 1)]
+
+        # column정보 변경
+        temp_wide.rename(columns = {"stnId" : "rc_code"}, inplace = True)
+        change_cols = [f"hour{v}" for v in temp_wide.columns[5:]]
+        temp_wide.columns =  list(temp_wide.columns[:5]) + change_cols
+
         wide_dict[stnId] = temp_wide
 
 

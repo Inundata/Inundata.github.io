@@ -24,7 +24,7 @@ def create_md(title, content, md_path):
     toc: true
     toc_sticky: true
     published: true
-    ---
+---
 
     {content}
     """

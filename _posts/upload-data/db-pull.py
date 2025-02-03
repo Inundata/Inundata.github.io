@@ -45,7 +45,7 @@ try:
     load_dotenv()
 
     # 🔹 특정 경로의 모든 .md 파일 삭제
-    md_files = glob.glob(os.path.join(file_path, "*.md"))
+    md_files = glob.glob(os.path.join(os.path.cwd(), "*.md"))
     
     for md_file in md_files:
         try:
@@ -54,45 +54,45 @@ try:
         except Exception as e:
             print(f"❌ 삭제 실패: {md_file}, 오류: {e}")
 
-    # # connect to db
-    # host = os.getenv("HOST")
-    # user = os.getenv("USER")
-    # pw = os.getenv("PW")
-    # target_db = os.getenv("iMAES_DB")
+    # connect to db
+    host = os.getenv("HOST")
+    user = os.getenv("USER")
+    pw = os.getenv("PW")
+    target_db = os.getenv("iMAES_DB")
 
-    # cur, conn = access_db(host, user, pw, target_db)
+    cur, conn = access_db(host, user, pw, target_db)
 
-    # # temperature cols
-    # target_table = "temperature"
-    # temperature_cols = get_cols(cur, target_table)
+    # temperature cols
+    target_table = "temperature"
+    temperature_cols = get_cols(cur, target_table)
 
-    # # fetch `temperature table`
-    # get_temperature(cur, temperature_cols, round_float64_columns)
+    # fetch `temperature table`
+    get_temperature(cur, temperature_cols, round_float64_columns)
 
-    # # temperature file
-    # temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
-    # wide_temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
+    # temperature file
+    temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
+    wide_temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
 
-    # # create wide temp.xlsx file
-    # wide_temperature(file_path, temp_fname)
+    # create wide temp.xlsx file
+    wide_temperature(file_path, temp_fname)
 
-    # # temperature file
-    # temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
-    # temp_wide_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
+    # temperature file
+    temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
+    temp_wide_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
 
-    # file_list = [temp_fname, temp_wide_fname]
-    # download_links = main(temp_fname, file_path, file_list)
+    file_list = [temp_fname, temp_wide_fname]
+    download_links = main(temp_fname, file_path, file_list)
 
-    # # create markdown file
-    # title = f"{datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터"
-    # content = f"""
+    # create markdown file
+    title = f"{datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터"
+    content = f"""
 
-    # {datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터입니다.
+    {datetime.today().strftime('%Y-%m-%d')}기준 기온 데이터입니다.
 
-    # 1. [Long version]({download_links[0]})
-    # 2. [Wide version]({download_links[1]})
-    # """
-    # create_md(title, content, os.getcwd())
+    1. [Long version]({download_links[0]})
+    2. [Wide version]({download_links[1]})
+    """
+    create_md(title, content, os.getcwd())
 
 except:
     # telegram bot 생성
@@ -100,5 +100,5 @@ except:
     iMAES_TELEGRAM_CHANNEL_ID = "iMAES_TELEGRAM_CHANNEL_ID"
     bot = TelegramBot(iMAES_TELEGRAM_TOKEN, iMAES_TELEGRAM_CHANNEL_ID)
 
-    text = f"{datetime.today().strftime("%Y-%m-%d")} github page업로드가 실패했습니다."
+    text = f"{datetime.today().strftime('%Y-%m-%d')} github page업로드가 실패했습니다."
     bot.send_message(text)

@@ -54,27 +54,27 @@ try:
         except Exception as e:
             print(f"❌ 삭제 실패: {md_file}, 오류: {e}")
 
-    # # connect to db
-    # host = os.getenv("HOST")
-    # user = os.getenv("USER")
-    # pw = os.getenv("PW")
-    # target_db = os.getenv("iMAES_DB")
+    # connect to db
+    host = os.getenv("HOST")
+    user = os.getenv("USER")
+    pw = os.getenv("PW")
+    target_db = os.getenv("iMAES_DB")
 
-    # cur, conn = access_db(host, user, pw, target_db)
+    cur, conn = access_db(host, user, pw, target_db)
 
-    # # temperature cols
-    # target_table = "temperature"
-    # temperature_cols = get_cols(cur, target_table)
+    # temperature cols
+    target_table = "temperature"
+    temperature_cols = get_cols(cur, target_table)
 
-    # # fetch `temperature table`
-    # get_temperature(cur, temperature_cols, round_float64_columns)
+    # fetch `temperature table`
+    get_temperature(cur, temperature_cols, round_float64_columns)
 
-    # # temperature file
-    # temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
-    # wide_temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
+    # temperature file
+    temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
+    wide_temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
 
-    # # create wide temp.xlsx file
-    # wide_temperature(file_path, temp_fname)
+    # create wide temp.xlsx file
+    wide_temperature(file_path, temp_fname)
 
     # temperature file
     temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]

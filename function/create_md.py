@@ -14,16 +14,16 @@ def create_md(title, content, md_path):
 
     # Markdown 파일 내용
     md_content = f"""---
-    title:  "{title}"
-    show_date: true
-    comments: true
-    layout: single
-    categories:
-    - data
-    tags: data
-    toc: true
-    toc_sticky: true
-    published: true
+title:  "{title}"
+show_date: true
+comments: true
+layout: single
+categories:
+- data
+tags: data
+toc: true
+toc_sticky: true
+published: true
 ---
 
     {content}

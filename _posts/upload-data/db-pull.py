@@ -55,7 +55,7 @@ try:
             print(f"❌ 삭제 실패: {md_file}, 오류: {e}")
 
     # 🔹 모든 temperature file삭제
-    exist_temperature_files = list(file_path.glob("*.xlsx"))
+    exist_temperature_files = list(Path(file_path).glob("*.xlsx"))
 
     for temperature_file in exist_temperature_files:
         try:

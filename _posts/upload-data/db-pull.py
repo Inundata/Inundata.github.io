@@ -40,6 +40,8 @@ from Telegrambot import TelegramBot
 
 import glob
 
+from time import sleep
+
 # load environment file
 try:
     load_dotenv()
@@ -88,13 +90,12 @@ try:
 
     # temperature file
     temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
-    wide_temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
+    sleep(60)
 
     # create wide temp.xlsx file
     wide_temperature(file_path, temp_fname)
 
-    # temperature file
-    temp_fname = [v for v in os.listdir(file_path) if v.startswith("temperature")][0]
+    # temperature file(wide)
     temp_wide_fname = [v for v in os.listdir(file_path) if v.startswith("temperature_wide")][0]
 
     file_list = [temp_fname, temp_wide_fname]

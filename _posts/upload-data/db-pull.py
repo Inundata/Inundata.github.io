@@ -45,24 +45,31 @@ try:
     load_dotenv()
 
     # 🔹 특정 경로의 모든 .md 파일 삭제
-    md_files = list(Path(os.getcwd()).glob("*.md"))
+    md_files = list(Path.cwd().glob("*.md"))
 
-    for md_file in md_files:
-        try:
-            os.remove(md_file)
-            print(f"🗑️ 삭제 완료: {md_file}")
-        except Exception as e:
-            print(f"❌ 삭제 실패: {md_file}, 오류: {e}")
+    if not md_files:
+        print("📂 md 파일이 없습니다. 코드를 실행하지 않습니다.")
+    else:
+        for md_file in md_files:
+            try:
+                os.remove(md_file)
+                print(f"🗑️ 삭제 완료: {md_file}")
+            except Exception as e:
+                print(f"❌ 삭제 실패: {md_file}, 오류: {e}")
 
     # 🔹 모든 temperature file삭제
     exist_temperature_files = list(Path(file_path).glob("*.xlsx"))
 
-    for temperature_file in exist_temperature_files:
-        try:
-            os.remove(md_file)
-            print(f"🗑️ 기온 파일삭제 완료: {md_file}")
-        except Exception as e:
-            print(f"❌ 삭제 실패: {md_file}, 오류: {e}")
+    if not exist_temperature_files:
+        print("📂 기온 파일이 없습니다. 코드를 실행하지 않습니다.")
+
+    else:
+        for temperature_file in exist_temperature_files:
+            try:
+                os.remove(temperature_file)
+                print(f"🗑️ 기온 파일삭제 완료: {temperature_file}")
+            except Exception as e:
+                print(f"❌ 삭제 실패: {temperature_file}, 오류: {e}")
 
     # connect to db
     host = os.getenv("HOST")

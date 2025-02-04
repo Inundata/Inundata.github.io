@@ -53,6 +53,6 @@ def wide_temperature(file_path, temp_fname):
                         , engine = "xlsxwriter")
 
     for stnId in stnIds:
-        wide_dict[stnId].to_excel(writer, sheet_name = f"temp{stnId}1h", index = False)
+        wide_dict[stnId].to_excel(writer, sheet_name = f"temp{stnId}p1h", index = False)
 
     writer.close()

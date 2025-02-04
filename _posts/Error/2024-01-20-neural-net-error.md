@@ -1,5 +1,5 @@
 ---
-title:  "Neural Net Reproduce 에러"
+title: "Neural Net Reproduce 에러"
 show_date: true
 comments: true
 layout: single
@@ -11,6 +11,7 @@ tags:
 toc: true
 toc_sticky: true
 toc_label: "목차"
+published: false
 ---
 
 얼마 전 Vanilla Neural Network를 짤 일이 있어서 짜본 다음에, reproducibility를 회사와 집 모두에서 확인하여 마음 놓고 있었다.
@@ -20,18 +21,18 @@ toc_label: "목차"
 며칠을 고생한 끝에 해결하긴 했는데, 아직 그 원인은 명확히 밝혀내지 못하고 있으며 혹시나 하여 이를 기록으로 남긴다([stackoverflow에 남긴 자문자답의 글](https://stackoverflow.com/questions/77843222/same-seed-number-package-versions-python-version-but-different-neural-net-re)).
 
 ### 파이썬 패키지 버전 및 초기 셋팅
+
 <br>
 사용하고 있는 Python 및 관련한 package 버전은 다음과 같다.
 
->>>
-python = 3.9.2 <br>
-keras=2.12.0<br> tensorflow=2.12.0<br>
-pandas=1.5.3<br> numpy=1.23.5<br>
-statsmodels=0.13.5 scikit-learn=1.2.2<br>
->>>
+> > > python = 3.9.2 <br>
+> > > keras=2.12.0<br> tensorflow=2.12.0<br>
+> > > pandas=1.5.3<br> numpy=1.23.5<br>
+> > > statsmodels=0.13.5 scikit-learn=1.2.2<br>
 
 당시에 짰던 코드는 다음과 같다.
 <br>
+
 ```python
 reset_seeds(42) # For reproducibility
 model = Sequential()
@@ -58,20 +59,20 @@ def reset_seeds(seed):
 ```
 
 ### 초기 가중치의 합
+
 <br>
 위와 같이 한 뒤에, 회사/집의 데스크탑과 노트북의 초기 weight의 sum을 확인한 결과, 둘의 결과는 모두 동일한 것으로 나왔다.
 
 **회사와 집의 초기 가중치의 합 (Before training)**
->>>
-[-9.959677, 0.0, -5.590966, 0.0, -1.1521256, 0.0]
->>>
+
+> > > [-9.959677, 0.0, -5.590966, 0.0, -1.1521256, 0.0]
 
 **노트북의 초기 가중치의 합 (Before training)**
->>>
-[-9.959677, 0.0, -5.590966, 0.0, -1.1521256, 0.0]
->>>
+
+> > > [-9.959677, 0.0, -5.590966, 0.0, -1.1521256, 0.0]
 
 그리고 아래와 같이 간단한 학습을 각각 진행하였다.
+
 ```python
 hist = model.fit(x = train_X_arr, y = train_y_arr, batch_size = 1, epochs = 1, verbose = 2, shuffle = False)
 ```
@@ -79,20 +80,19 @@ hist = model.fit(x = train_X_arr, y = train_y_arr, batch_size = 1, epochs = 1, v
 학습을 한 뒤, 초기 가중치의 합을 다시 구해본 결과 아래와 같았다.
 
 **회사와 집의 초기 가중치의 합 (Before training)**
->>>
-[-159.85245, -5.7658424, 57.23868, 0.47032726, 0.13733912, -0.25829855]
->>>
+
+> > > [-159.85245, -5.7658424, 57.23868, 0.47032726, 0.13733912, -0.25829855]
 
 **노트북의 초기 가중치의 합 (Before training)**
->>>
-[-168.1607, -6.258976, 50.797672, 0.42788112, 0.15801406, -0.26924044]
->>>
+
+> > > [-168.1607, -6.258976, 50.797672, 0.42788112, 0.15801406, -0.26924044]
 
 seed까지 맞췄는데도 가중치의 합이 달라, 며칠을 검색해보고 다양한 에러 사례를 찾아보았지만 정확히 부합하는게 없었다.
 
 그런데 이상하게도 코드를 아래와 같이 바꾸니, reproduce가 되는 것을 확인하였다.
 
 ### Reproducibility Error 수정
+
 <br>
 **Original One**
 ```python
@@ -105,6 +105,7 @@ model.compile(loss = 'mae')
 ```
 
 **New One**
+
 ```python
 reset_seeds(42)
 model = Sequential()

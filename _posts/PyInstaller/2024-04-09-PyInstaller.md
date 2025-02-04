@@ -8,7 +8,7 @@ categories:
 tags:
 toc: true
 toc_sticky: false
-published: true
+published: false
 ---
 
 파이썬 파일을 *.exe 파일로 만들어서 배포하는 경우에 다음의 패키지를 사용하여야 한다. <br/>

@@ -72,6 +72,7 @@ try:
                 print(f"🗑️ 기온 파일삭제 완료: {temperature_file}")
             except Exception as e:
                 print(f"❌ 삭제 실패: {temperature_file}, 오류: {e}")
+            sleep(3)
 
     # connect to db
     host = os.getenv("HOST")

@@ -20,7 +20,8 @@ comments: true
 layout: single
 categories:
 - data
-tags: data
+tags: 
+- data
 toc: true
 toc_sticky: true
 published: true
